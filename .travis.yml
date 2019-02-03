@@ -1,13 +1,13 @@
-language: python # => 1
-    python: # => 2
+language: python
+    python:
       - "3.7"
-    services: # => 3
-      - mysql
-    env: # => 4
-      -DJANGO=2.1 DB=mysql
-    install: # => 5
+    install:
       - pip install -r requirements.txt
-    before_script: # => 6
+      - pip install pytest coverage codecov
+    before_script:
       - mysql -e 'create database test;' -u root
-    script: # => 7
-      - python manage.py test
+    script:
+      - coverage run --source='.' manage.py test
+      - coverage run --source='.' pytest
+    after_success:
+      - codecov
