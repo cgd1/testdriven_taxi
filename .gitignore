@@ -3,6 +3,8 @@
 # Edit at https://www.gitignore.io/?templates=django
 
 .idea
+.coveralls.yml
+.coverage
 
 ### Django ###
 *.log

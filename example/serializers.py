@@ -1,9 +1,18 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
+from .models import Trip
+
 """
 We're using get_user_model to query django for the defined user model for the project (not default one, see models.py) 
 """
+
+
+class TripSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Trip
+        fields = '__all__'
+        read_only_fields = ('id', 'nk', 'created', 'updated',)
 
 
 class UserSerializer(serializers.ModelSerializer):
